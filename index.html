@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sokhna Mbengue — Étudiante en Géomatique</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <!-- Polices -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css">
+  <!-- Icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+
+</head>
+
+<body>
+
+  <!-- =====================
+       NAVIGATION
+       ===================== -->
+  <header class="nav" id="nav">
+    <div class="nav-interieur">
+
+      <!-- Logo -->
+      <a href="#accueil" class="logo">SM<span>.</span></a>
+
+      <!-- Liens de navigation -->
+      <ul class="nav-liens" id="navLiens">
+        <li><a href="#accueil" class="nav-lien actif">Accueil</a></li>
+        <li><a href="#projets" class="nav-lien">Projets</a></li>
+        <li><a href="#competences" class="nav-lien">Compétences</a></li>
+        <li><a href="#contact" class="nav-lien">Contact</a></li>
+        <li>
+          <button class="btn-theme" id="btnTheme" aria-label="Changer le thème">
+            <i class="fas fa-sun" id="iconeTheme"></i>
+          </button>
+        </li>
+      </ul>
+
+      <!-- Bouton burger (mobile) -->
+      <button class="burger" id="burger" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </header>
+
+
+
+
+  <!-- =====================
+       SECTION ACCUEIL
+       ===================== -->
+  <section id="accueil" class="hero-mini">
+
+    <!-- Décorations en arrière-plan -->
+    <div class="hero-lueur" aria-hidden="true"></div>
+    <div class="hero-ligne-deco" aria-hidden="true"></div>
+
+    <div class="conteneur">
+      <div class="hero-layout">
+
+        <!-- ======= GAUCHE : informations ======= -->
+        <div class="hero-texte">
+
+          <!-- Étiquette -->
+          <div class="hero-tag">
+            <i class="fas fa-graduation-cap"></i>
+            Licence 2 · Géomatique
+          </div>
+
+          <!-- Nom -->
+          <h1 class="hero-nom">
+            <span class="hero-nom-prenom">Sokhna</span>
+            <span class="hero-nom-famille">Mbengue</span>
+          </h1>
+
+          <!-- Trait -->
+          <div class="hero-trait"></div>
+
+          <!-- Poste -->
+          <p class="hero-poste-txt">Étudiante en Géomatique</p>
+
+          <!-- Réseaux sociaux -->
+          <div class="hero-reseaux">
+            <a href="https://github.com/sokhna-mbengue" target="_blank" class="hero-lien-social" aria-label="GitHub">
+              <i class="fab fa-github"></i><span>GitHub</span>
+            </a>
+            <a href="https://linkedin.com/in/sokhna-mbengue" target="_blank" class="hero-lien-social"
+              aria-label="LinkedIn">
+              <i class="fab fa-linkedin"></i><span>LinkedIn</span>
+            </a>
+            <a href="https://twitter.com/sokhna_mbengue" target="_blank" class="hero-lien-social" aria-label="Twitter">
+              <i class="fab fa-twitter"></i><span>Twitter</span>
+            </a>
+            <a href="mailto:sokhna.mbengue@email.com" class="hero-lien-social" aria-label="Email">
+              <i class="fas fa-envelope"></i><span>Email</span>
+            </a>
+          </div>
+
+          <!-- Bouton CTA -->
+          <div class="hero-cta">
+            <a href="#projets" class="btn btn-or">
+              Voir mes projets <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- ======= DROITE : photo ======= -->
+        <div class="hero-photo-col">
+          <div class="hero-photo-cadre">
+
+
+            <img src="profil.jpg" alt="Photo de Sokhna Mbengue" class="hero-photo" />
+
+            <!-- Halo derrière la photo -->
+            <div class="hero-photo-halo"></div>
+
+            <!-- Badge "disponible" en haut à droite -->
+            <div class="hero-dispo-badge">
+              <span class="hero-dispo-point"></span>
+              Disponible
+            </div>
+
+            <!-- Étiquette flottante en bas à gauche -->
+            <div class="hero-photo-etiquette">
+              <div class="hero-photo-etiquette-icone">
+                <i class="fas fa-map-marked-alt"></i>
+              </div>
+              <div class="hero-photo-etiquette-texte">
+                <strong>Géomatique</strong>
+                <span>Cartographie · SIG · Télédétection</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Indicateur de défilement -->
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="hero-scroll-trait"></div>
+    </div>
+
+  </section>
+
+
+  <!-- =====================
+       SECTION PROJETS
+       ===================== -->
+  <section id="projets" class="section section-projets">
+    <div class="conteneur">
+
+      <div class="en-tete-section animer">
+        <div class="etiquette">
+          <span class="etiquette-ligne"></span>
+          <span>01 — Réalisations</span>
+        </div>
+        <h2 class="titre-section">Mes Projets</h2>
+        <p class="sous-titre-section">Découvrez mes réalisations récentes</p>
+      </div>
+
+      <!-- Boutons de filtre — data-filtre correspond à la catégorie des cartes -->
+      <div class="filtres">
+        <button class="filtre actif" data-filtre="tous">Tous</button>
+        <button class="filtre" data-filtre="web">Web</button>
+        <button class="filtre" data-filtre="mobile">Mobile</button>
+        <button class="filtre" data-filtre="design">Design</button>
+      </div>
+
+      <!-- Grille des projets — chaque carte a data-categorie pour le filtre -->
+      <div class="grille-projets" id="grilleProjets">
+
+        <article class="carte-projet animer" data-categorie="web">
+          <div class="carte-img">
+            <img src="https://picsum.photos/seed/ecommerce/400/300.jpg" alt="E-Commerce Platform" loading="lazy" />
+            <div class="carte-overlay">
+              <a href="https://github.com" target="_blank" class="carte-lien">
+                Voir le projet <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <div class="carte-corps">
+            <span class="carte-categorie">Web</span>
+            <h3 class="carte-titre">E-Commerce Platform</h3>
+            <p class="carte-desc">Plateforme de vente en ligne complète avec panier, paiement et gestion des stocks.</p>
+            <div class="carte-tags">
+              <span class="tag">HTML5</span>
+              <span class="tag">CSS3</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">Node.js</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="carte-projet animer" data-categorie="web">
+          <div class="carte-img">
+            <img src="https://picsum.photos/seed/taskapp/400/300.jpg" alt="Task Management App" loading="lazy" />
+            <div class="carte-overlay">
+              <a href="https://github.com" target="_blank" class="carte-lien">
+                Voir le projet <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <div class="carte-corps">
+            <span class="carte-categorie">Web</span>
+            <h3 class="carte-titre">Task Management App</h3>
+            <p class="carte-desc">Application de gestion de tâches avec drag & drop, notifications et synchronisation.
+            </p>
+            <div class="carte-tags">
+              <span class="tag">React</span>
+              <span class="tag">Firebase</span>
+              <span class="tag">Material-UI</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="carte-projet animer" data-categorie="web">
+          <div class="carte-img">
+            <img src="https://picsum.photos/seed/weather/400/300.jpg" alt="Weather Dashboard" loading="lazy" />
+            <div class="carte-overlay">
+              <a href="https://github.com" target="_blank" class="carte-lien">
+                Voir le projet <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <div class="carte-corps">
+            <span class="carte-categorie">Web</span>
+            <h3 class="carte-titre">Weather Dashboard</h3>
+            <p class="carte-desc">Dashboard météo interactif avec prévisions, cartes et données en temps réel.</p>
+            <div class="carte-tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">API</span>
+              <span class="tag">Chart.js</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="carte-projet animer" data-categorie="mobile">
+          <div class="carte-img">
+            <img src="https://picsum.photos/seed/banking/400/300.jpg" alt="Mobile Banking App" loading="lazy" />
+            <div class="carte-overlay">
+              <a href="https://github.com" target="_blank" class="carte-lien">
+                Voir le projet <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <div class="carte-corps">
+            <span class="carte-categorie">Mobile</span>
+            <h3 class="carte-titre">Mobile Banking App</h3>
+            <p class="carte-desc">Application bancaire mobile avec authentification sécurisée et transactions.</p>
+            <div class="carte-tags">
+              <span class="tag">React Native</span>
+              <span class="tag">Redux</span>
+              <span class="tag">Node.js</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="carte-projet animer" data-categorie="design">
+          <div class="carte-img">
+            <img src="https://picsum.photos/seed/portfolio/400/300.jpg" alt="Portfolio Design" loading="lazy" />
+            <div class="carte-overlay">
+              <a href="https://github.com" target="_blank" class="carte-lien">
+                Voir le projet <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <div class="carte-corps">
+            <span class="carte-categorie">Design</span>
+            <h3 class="carte-titre">Portfolio Design</h3>
+            <p class="carte-desc">Design créatif de portfolio avec animations modernes et effets visuels.</p>
+            <div class="carte-tags">
+              <span class="tag">Figma</span>
+              <span class="tag">Adobe XD</span>
+              <span class="tag">CSS3</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="carte-projet animer" data-categorie="web">
+          <div class="carte-img">
+            <img src="https://picsum.photos/seed/social/400/300.jpg" alt="Social Media Dashboard" loading="lazy" />
+            <div class="carte-overlay">
+              <a href="https://github.com" target="_blank" class="carte-lien">
+                Voir le projet <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          <div class="carte-corps">
+            <span class="carte-categorie">Web</span>
+            <h3 class="carte-titre">Social Media Dashboard</h3>
+            <p class="carte-desc">Tableau de bord pour analyser les performances des réseaux sociaux.</p>
+            <div class="carte-tags">
+              <span class="tag">Vue.js</span>
+              <span class="tag">D3.js</span>
+              <span class="tag">Express</span>
+            </div>
+          </div>
+        </article>
+
+      </div><!-- fin grille-projets -->
+    </div>
+  </section>
+
+
+  <!-- =====================
+       SECTION COMPÉTENCES
+       ===================== -->
+  <section id="competences" class="section section-competences">
+    <div class="conteneur">
+
+      <div class="en-tete-section animer">
+        <div class="etiquette">
+          <span class="etiquette-ligne"></span>
+          <span>02 — Expertise</span>
+        </div>
+        <h2 class="titre-section">Mes Compétences</h2>
+        <p class="sous-titre-section">Technologies et outils que je maîtrise</p>
+      </div>
+
+      <div class="grille-competences">
+
+        <!-- Bloc Frontend -->
+        <div class="bloc-competence animer">
+          <div class="bloc-titre">Frontend</div>
+
+          <div class="competence-item">
+            <div class="comp-infos">
+              <span class="comp-nom">HTML5</span>
+              <span class="comp-pourcent">95%</span>
+            </div>
+            <div class="barre-fond">
+              <div class="barre-rempli" data-niveau="95"></div>
+            </div>
+          </div>
+
+          <div class="competence-item">
+            <div class="comp-infos">
+              <span class="comp-nom">CSS3</span>
+              <span class="comp-pourcent">90%</span>
+            </div>
+            <div class="barre-fond">
+              <div class="barre-rempli" data-niveau="90"></div>
+            </div>
+          </div>
+
+          <div class="competence-item">
+            <div class="comp-infos">
+              <span class="comp-nom">JavaScript</span>
+              <span class="comp-pourcent">85%</span>
+            </div>
+            <div class="barre-fond">
+              <div class="barre-rempli" data-niveau="85"></div>
+            </div>
+          </div>
+
+          <div class="competence-item">
+            <div class="comp-infos">
+              <span class="comp-nom">React</span>
+              <span class="comp-pourcent">80%</span>
+            </div>
+            <div class="barre-fond">
+              <div class="barre-rempli" data-niveau="80"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bloc Backend -->
+        <div class="bloc-competence animer">
+          <div class="bloc-titre">Backend</div>
+
+          <div class="competence-item">
+            <div class="comp-infos">
+              <span class="comp-nom">Node.js</span>
+              <span class="comp-pourcent">75%</span>
+            </div>
+            <div class="barre-fond">
+              <div class="barre-rempli" data-niveau="75"></div>
+            </div>
+          </div>
+
+          <div class="competence-item">
+            <div class="comp-infos">
+              <span class="comp-nom">Python</span>
+              <span class="comp-pourcent">70%</span>
+            </div>
+            <div class="barre-fond">
+              <div class="barre-rempli" data-niveau="70"></div>
+            </div>
+          </div>
+
+          <div class="competence-item">
+            <div class="comp-infos">
+              <span class="comp-nom">MongoDB</span>
+              <span class="comp-pourcent">65%</span>
+            </div>
+            <div class="barre-fond">
+              <div class="barre-rempli" data-niveau="65"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bloc Outils -->
+        <div class="bloc-competence animer">
+          <div class="bloc-titre">Outils</div>
+
+          <div class="competence-item">
+            <div class="comp-infos">
+              <span class="comp-nom">Git</span>
+              <span class="comp-pourcent">85%</span>
+            </div>
+            <div class="barre-fond">
+              <div class="barre-rempli" data-niveau="85"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bloc Design -->
+        <div class="bloc-competence animer">
+          <div class="bloc-titre">Design</div>
+
+          <div class="competence-item">
+            <div class="comp-infos">
+              <span class="comp-nom">Figma</span>
+              <span class="comp-pourcent">70%</span>
+            </div>
+            <div class="barre-fond">
+              <div class="barre-rempli" data-niveau="70"></div>
+            </div>
+          </div>
+
+          <div class="competence-item">
+            <div class="comp-infos">
+              <span class="comp-nom">UI/UX Design</span>
+              <span class="comp-pourcent">75%</span>
+            </div>
+            <div class="barre-fond">
+              <div class="barre-rempli" data-niveau="75"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================
+       SECTION CONTACT
+       ===================== -->
+  <section id="contact" class="section section-contact">
+    <div class="conteneur">
+
+      <div class="en-tete-section animer">
+        <div class="etiquette">
+          <span class="etiquette-ligne"></span>
+          <span>03 — Communication</span>
+        </div>
+        <h2 class="titre-section">Contact</h2>
+        <p class="sous-titre-section">Discutons de votre prochain projet</p>
+      </div>
+
+      <div class="contact-grille">
+
+        <!-- Informations de contact -->
+        <div class="contact-info animer">
+          <h3>Restons en contact</h3>
+          <p>Je suis toujours intéressé par de nouveaux défis et opportunités de collaboration.</p>
+
+          <div class="contact-lignes">
+            <div class="contact-ligne">
+              <div class="contact-icone"><i class="fas fa-envelope"></i></div>
+              <span>sokhna.mbengue@univ-thies.sn</span>
+            </div>
+            <div class="contact-ligne">
+              <div class="contact-icone"><i class="fas fa-phone"></i></div>
+              <span>+221 77 053 94 48</span>
+            </div>
+            <div class="contact-ligne">
+              <div class="contact-icone"><i class="fas fa-map-marker-alt"></i></div>
+              <span>Grand Standing, Thiès</span>
+            </div>
+          </div>
+
+          <!-- QR Code -->
+          <div class="qr-bloc">
+            <p class="qr-titre">Scannez pour mes coordonnées</p>
+            <div class="qr-interieur">
+              <!-- <div class="qr-code">
+                <canvas id="qrCanvas"></canvas>
+              </div> -->
+              <div id="qrcode"></div>
+              <div class="qr-texte">
+                <p>Scannez ce QR code pour enregistrer mes informations dans vos contacts.</p>
+                <button class="btn btn-contour" style="font-size:0.7rem;padding:0.5rem 1rem;min-height:auto;" onclick="telechargerVCard()">
+                  <i class="fas fa-download"></i> Télécharger vCard
+                </button>
+              </div>
+            </div> 
+          
+        </div>
+      </div>
+
+      <!-- Formulaire -->
+      <form class="formulaire animer" id="formulaireContact">
+
+        <div class="champ">
+          <label for="nom">Nom complet</label>
+          <input type="text" id="nom" name="nom" placeholder="Votre nom" required />
+          <span class="msg-erreur"></span>
+        </div>
+
+        <div class="champ">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="votre@email.com" required />
+          <span class="msg-erreur"></span>
+        </div>
+
+        <div class="champ">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Parlez-moi de votre projet..."
+            required></textarea>
+          <span class="msg-erreur"></span>
+        </div>
+
+        <button type="submit" class="btn btn-or">
+          Envoyer le message <i class="fas fa-paper-plane"></i>
+        </button>
+
+      </form>
+
+    </div>
+    </div>
+  </section>
+
+
+  <!-- =====================
+       PIED DE PAGE
+       ===================== -->
+  <footer class="pied">
+    <div class="conteneur">
+      <div class="pied-interieur">
+        <span class="pied-logo">SM<span style="color:var(--or)">.</span></span>
+        <p>&copy; 2024 Sokhna Mbengue. Tous droits réservés.</p>
+        <p>Fait avec <i class="fas fa-heart" style="color:var(--or)"></i> et beaucoup de café</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- =====================
+       MODAL DE CONFIRMATION
+       ===================== -->
+  <div class="modal-fond" id="modal">
+    <div class="modal-boite">
+      <button class="modal-fermer" onclick="fermerModal()" aria-label="Fermer">&times;</button>
+      <div class="modal-icone"><i class="fas fa-check"></i></div>
+      <h3>Message envoyé !</h3>
+      <p>Merci pour votre message. Je vous répondrai dans les plus brefs délais.</p>
+      <button class="btn btn-or" onclick="fermerModal()">Fermer</button>
+    </div>
+  </div>
+
+
+  <!-- =====================
+       TOAST (notification)
+       ===================== -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastTexte">Message</span>
+  </div>
+
+
+  >
+
+  <script src="app.js"></script>
+
+</body>
+
+</html>

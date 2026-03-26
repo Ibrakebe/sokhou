@@ -1,0 +1,1322 @@
+:root {
+      --or:        #c8a455;
+      --or-clair:  #e8ca85;
+      --or-fond:   rgba(200, 164, 85, 0.10);
+      --fond:      #09090f;
+      --fond2:     #111119;
+      --fond3:     #1a1a26;
+      --fond4:     #242433;
+      --texte:     #eeeef5;
+      --texte2:    #a0a0b8;
+      --texte3:    #5a5a72;
+      --bord:      rgba(255,255,255,0.06);
+      --bord-or:   rgba(200,164,85,0.18);
+      --rouge:     #ef4444;
+      --vert:      #4ade80;
+
+      --police-titre: 'Playfair Display', Georgia, serif;
+      --police-texte: 'Plus Jakarta Sans', sans-serif;
+      --police-code:  'Fira Code', monospace;
+
+      --rayon:   10px;
+      --rayon-l: 18px;
+      --ombre:   0 8px 32px rgba(0,0,0,0.5);
+      --trans:   0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* Mode clair */
+    body.clair {
+      --fond:   #f5f4ef;
+      --fond2:  #eeede6;
+      --fond3:  #e4e2d8;
+      --fond4:  #d8d6ca;
+      --texte:  #111119;
+      --texte2: #3a3a52;
+      --texte3: #7a7a92;
+      --bord:   rgba(0,0,0,0.07);
+      --bord-or: rgba(160,120,40,0.22);
+      --ombre:  0 8px 32px rgba(0,0,0,0.10);
+    }
+
+    /* ========================================
+       2. RESET DE BASE
+       ======================================== */
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--police-texte);
+      background: var(--fond);
+      color: var(--texte);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background var(--trans), color var(--trans);
+    }
+
+    a { color: var(--or); text-decoration: none; }
+    a:hover { color: var(--or-clair); }
+
+    img { display: block; max-width: 100%; }
+
+    .conteneur {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ========================================
+       3. BARRE DE NAVIGATION
+       ======================================== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(9,9,15,0.82);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--bord);
+      transition: background var(--trans);
+    }
+
+    body.clair .nav {
+      background: rgba(245,244,239,0.88);
+    }
+
+    .nav-interieur {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      max-width: 1160px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-family: var(--police-titre);
+      font-size: 1.5rem;
+      color: var(--texte);
+    }
+    .logo span { color: var(--or); }
+
+    .nav-liens {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-lien {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--texte3);
+      transition: color var(--trans);
+      position: relative;
+    }
+
+    .nav-lien::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      height: 1px; width: 0;
+      background: var(--or);
+      transition: width var(--trans);
+    }
+
+    .nav-lien:hover,
+    .nav-lien.actif { color: var(--texte); }
+    .nav-lien.actif { color: var(--or); }
+    .nav-lien:hover::after,
+    .nav-lien.actif::after { width: 100%; }
+
+    /* Bouton thème */
+    .btn-theme {
+      background: transparent;
+      border: 1px solid var(--bord);
+      color: var(--texte3);
+      width: 36px; height: 36px;
+      border-radius: var(--rayon);
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem;
+      transition: all var(--trans);
+    }
+    .btn-theme:hover { border-color: var(--or); color: var(--or); }
+
+    /* Bouton hamburger mobile */
+    .burger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 36px; height: 36px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    .burger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--texte);
+      border-radius: 2px;
+      transition: all var(--trans);
+    }
+
+    /* ========================================
+       4. SECTIONS — style général
+       ======================================== */
+    .section {
+      padding: 6rem 0;
+    }
+
+    .en-tete-section {
+      margin-bottom: 3rem;
+    }
+
+    .etiquette {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 0.75rem;
+    }
+    .etiquette-ligne {
+      display: block;
+      width: 28px; height: 1px;
+      background: var(--or);
+      opacity: 0.5;
+    }
+
+    .titre-section {
+      font-family: var(--police-titre);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--texte);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .sous-titre-section {
+      color: var(--texte3);
+      font-size: 0.95rem;
+    }
+
+    /* ========================================
+       5. SECTION ACCUEIL (HERO)
+       ======================================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 5rem;
+      position: relative;
+      overflow: hidden;
+      background: var(--fond);
+    }
+
+    /* Grand texte décoratif en arrière-plan */
+    .hero-deco {
+      position: absolute;
+      right: -3rem; bottom: -2rem;
+      font-family: var(--police-titre);
+      font-size: 22vw;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(200,164,85,0.05);
+      pointer-events: none;
+      user-select: none;
+      line-height: 1;
+    }
+
+    /* Cercles décoratifs flous */
+    .hero-cercle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(80px);
+      opacity: 0.12;
+    }
+    .hero-cercle-1 { width: 500px; height: 500px; background: var(--or); top: -100px; right: 10%; }
+    .hero-cercle-2 { width: 300px; height: 300px; background: #a855f7; bottom: 10%; left: 5%; }
+
+    .hero-grille {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Partie gauche du hero */
+    .hero-accent {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--or);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      animation: apparition 0.8s ease both;
+    }
+    .hero-accent-ligne { display:block; width:32px; height:1px; background:var(--or); }
+
+    .hero-avatar {
+      position: relative;
+      width: 80px; height: 80px;
+      margin-bottom: 1.5rem;
+      animation: apparition 0.8s ease 0.1s both;
+    }
+    .hero-avatar img {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--or);
+      position: relative; z-index: 1;
+    }
+    .hero-avatar::after {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 1px solid rgba(200,164,85,0.25);
+      animation: rotation 12s linear infinite;
+    }
+
+    @keyframes rotation { to { transform: rotate(360deg); } }
+
+    .hero-titre {
+      font-family: var(--police-titre);
+      line-height: 1.0;
+      margin-bottom: 1rem;
+    }
+    .hero-titre-ligne1 {
+      display: block;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 700;
+      color: var(--texte);
+      animation: apparition 0.8s ease 0.2s both;
+    }
+    .hero-titre-ligne2 {
+      display: block;
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--or);
+      animation: apparition 0.8s ease 0.3s both;
+    }
+
+    .hero-poste {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--texte3);
+      margin-bottom: 1.25rem;
+      animation: apparition 0.8s ease 0.4s both;
+    }
+
+    .hero-desc {
+      color: var(--texte2);
+      font-size: 1rem;
+      line-height: 1.8;
+      max-width: 460px;
+      margin-bottom: 2rem;
+      animation: apparition 0.8s ease 0.5s both;
+    }
+
+    /* Icônes réseaux sociaux */
+    .hero-reseaux {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      animation: apparition 0.8s ease 0.6s both;
+    }
+    .lien-social {
+      display: flex; align-items: center; justify-content: center;
+      width: 40px; height: 40px;
+      border: 1px solid var(--bord);
+      border-radius: var(--rayon);
+      color: var(--texte3);
+      font-size: 0.95rem;
+      transition: all var(--trans);
+    }
+    .lien-social:hover {
+      border-color: var(--or);
+      color: var(--or);
+      background: var(--or-fond);
+      transform: translateY(-3px);
+    }
+
+    /* Bouton principal */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.8rem;
+      border: none;
+      border-radius: var(--rayon);
+      font-family: var(--police-texte);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all var(--trans);
+      text-decoration: none;
+    }
+    .btn-or {
+      background: var(--or);
+      color: #09090f;
+      box-shadow: 0 4px 20px rgba(200,164,85,0.3);
+    }
+    .btn-or:hover {
+      background: var(--or-clair);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(200,164,85,0.45);
+      color: #09090f;
+    }
+    .btn-contour {
+      background: transparent;
+      color: var(--or);
+      border: 1px solid var(--or);
+    }
+    .btn-contour:hover {
+      background: var(--or-fond);
+      transform: translateY(-2px);
+      color: var(--or-clair);
+    }
+
+    /* Partie droite du hero — bloc code + stats */
+    .hero-droite {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      animation: apparition 0.9s ease 0.4s both;
+    }
+
+    /* Fenêtre de code style terminal */
+    .fenetre-code {
+      background: var(--fond3);
+      border: 1px solid var(--bord-or);
+      border-radius: var(--rayon-l);
+      overflow: hidden;
+    }
+    .fenetre-barre {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.75rem 1rem;
+      background: rgba(0,0,0,0.2);
+      border-bottom: 1px solid var(--bord);
+    }
+    .fenetre-point { width:10px; height:10px; border-radius:50%; }
+    .fenetre-point:nth-child(1) { background: #ff5f56; }
+    .fenetre-point:nth-child(2) { background: #ffbd2e; }
+    .fenetre-point:nth-child(3) { background: #27c93f; }
+    .fenetre-nom {
+      font-family: var(--police-code);
+      font-size: 0.7rem;
+      color: var(--texte3);
+      margin-left: auto;
+    }
+    .fenetre-code pre {
+      padding: 1.5rem;
+      font-family: var(--police-code);
+      font-size: 0.85rem;
+      line-height: 1.9;
+      overflow-x: auto;
+    }
+    .c-tag    { color: var(--or); }
+    .c-val    { color: var(--texte); }
+    .c-crochet{ color: var(--texte3); }
+    .c-ok     { color: var(--vert); }
+
+    /* Bloc des statistiques */
+    .stats {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.5rem 2rem;
+      background: var(--fond3);
+      border: 1px solid var(--bord-or);
+      border-radius: var(--rayon-l);
+    }
+    .stat { display: flex; flex-direction: column; gap: 2px; }
+    .stat-num {
+      font-family: var(--police-titre);
+      font-size: 1.8rem;
+      color: var(--or);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--texte3);
+    }
+    .stat-sep {
+      width: 1px; height: 40px;
+      background: var(--bord);
+    }
+
+    /* Indicateur de scroll en bas du hero */
+    .scroll-indic {
+      position: absolute;
+      bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--texte3);
+      animation: apparition 1s ease 1.2s both;
+    }
+    .scroll-trait {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--or), transparent);
+      animation: pulsation 2s ease-in-out infinite;
+    }
+
+    @keyframes pulsation {
+      0%,100% { opacity:0.4; }
+      50%      { opacity:1; }
+    }
+
+    @keyframes apparition {
+      from { opacity:0; transform:translateY(22px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* ========================================
+       6. SECTION PROJETS
+       ======================================== */
+    .section-projets { background: var(--fond2); }
+
+    /* Boutons de filtre */
+    .filtres {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .filtre {
+      padding: 0.4rem 1rem;
+      background: transparent;
+      border: 1px solid var(--bord);
+      border-radius: var(--rayon);
+      color: var(--texte3);
+      font-family: var(--police-texte);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all var(--trans);
+    }
+    .filtre:hover { border-color: var(--or); color: var(--or); }
+    .filtre.actif { background: var(--or); border-color: var(--or); color: #09090f; }
+
+    /* Grille de cartes projet */
+    .grille-projets {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .carte-projet {
+      background: var(--fond3);
+      border: 1px solid var(--bord);
+      border-radius: var(--rayon-l);
+      overflow: hidden;
+      transition: all var(--trans);
+      display: flex;
+      flex-direction: column;
+    }
+    .carte-projet:hover {
+      border-color: var(--bord-or);
+      transform: translateY(-6px);
+      box-shadow: var(--ombre);
+    }
+
+    /* Image avec overlay au survol */
+    .carte-img {
+      position: relative;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+    }
+    .carte-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease, filter 0.5s ease;
+      filter: grayscale(30%);
+    }
+    .carte-projet:hover .carte-img img {
+      transform: scale(1.06);
+      filter: grayscale(0%);
+    }
+    .carte-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(9,9,15,0.9) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity var(--trans);
+      display: flex; align-items: flex-end;
+      padding: 1.25rem;
+    }
+    .carte-projet:hover .carte-overlay { opacity: 1; }
+    .carte-lien {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--or);
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+
+    /* Corps de la carte */
+    .carte-corps {
+      padding: 1.25rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .carte-categorie {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--or);
+      opacity: 0.7;
+    }
+    .carte-titre {
+      font-family: var(--police-titre);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--texte);
+      margin: 0;
+    }
+    .carte-desc {
+      font-size: 0.85rem;
+      color: var(--texte3);
+      line-height: 1.6;
+      margin: 0;
+      flex: 1;
+    }
+    .carte-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 0.5rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--bord);
+    }
+    .tag {
+      padding: 3px 9px;
+      background: var(--or-fond);
+      border: 1px solid rgba(200,164,85,0.15);
+      border-radius: 4px;
+      font-family: var(--police-code);
+      font-size: 0.68rem;
+      color: var(--or);
+    }
+
+    /* Cacher/afficher les projets selon le filtre */
+    .carte-projet.cachee {
+      display: none;
+    }
+
+    /* ========================================
+       7. SECTION COMPÉTENCES
+       ======================================== */
+    .section-competences { background: var(--fond); }
+
+    .grille-competences {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .bloc-competence {
+      background: var(--fond3);
+      border: 1px solid var(--bord);
+      border-radius: var(--rayon-l);
+      padding: 1.75rem;
+      transition: border-color var(--trans);
+    }
+    .bloc-competence:hover { border-color: var(--bord-or); }
+
+    .bloc-titre {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--bord);
+    }
+
+    .competence-item { margin-bottom: 1.25rem; }
+    .competence-item:last-child { margin-bottom: 0; }
+
+    .comp-infos {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.3rem;
+    }
+    .comp-nom {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--texte);
+    }
+    .comp-pourcent {
+      font-family: var(--police-code);
+      font-size: 0.72rem;
+      color: var(--texte3);
+    }
+
+    /* Barre de progression */
+    .barre-fond {
+      height: 3px;
+      background: var(--bord);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .barre-rempli {
+      height: 100%;
+      background: linear-gradient(90deg, var(--or) 0%, var(--or-clair) 100%);
+      border-radius: 99px;
+      width: 0; /* commence à 0, animé par JS */
+      transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    /* ========================================
+       8. SECTION CONTACT
+       ======================================== */
+    .section-contact { background: var(--fond2); }
+
+    .contact-grille {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .contact-info h3 {
+      font-family: var(--police-titre);
+      font-size: 1.6rem;
+      color: var(--texte);
+      margin-bottom: 0.75rem;
+    }
+    .contact-info > p {
+      color: var(--texte2);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-lignes {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .contact-ligne {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--texte2);
+    }
+    .contact-icone {
+      width: 36px; height: 36px;
+      background: var(--or-fond);
+      border: 1px solid rgba(200,164,85,0.2);
+      border-radius: var(--rayon);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--or);
+      font-size: 0.8rem;
+      flex-shrink: 0;
+    }
+
+    /* Bloc QR code */
+     .qr-bloc {
+      padding: 1.25rem;
+      background: var(--fond3);
+      border: 1px solid var(--bord);
+      border-radius: var(--rayon-l); }
+      
+
+    .qr-titre {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--texte3);
+      margin-bottom: 1rem;
+    } 
+    .qr-interieur {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .qr-code {
+      width: 100px; height: 100px;
+      background: white;
+      border-radius: 6px;
+      flex-shrink: 0;
+      overflow: hidden;
+      border: 1px solid var(--bord);
+    }
+    .qr-texte p {
+      font-size: 0.8rem;
+      color: var(--texte3);
+      line-height: 1.5;
+      margin-bottom: 0.75rem;
+    }
+
+    /* Formulaire de contact */
+    .formulaire {
+      background: var(--fond3);
+      border: 1px solid var(--bord);
+      border-radius: var(--rayon-l);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .champ {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .champ label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--texte3);
+    }
+    .champ input,
+    .champ textarea {
+      background: var(--fond2);
+      border: 1px solid var(--bord);
+      border-radius: var(--rayon);
+      padding: 0.8rem 1rem;
+      font-family: var(--police-texte);
+      font-size: 0.9rem;
+      color: var(--texte);
+      outline: none;
+      transition: border-color var(--trans), box-shadow var(--trans);
+      resize: vertical;
+    }
+    .champ input::placeholder,
+    .champ textarea::placeholder { color: var(--texte3); }
+    .champ input:focus,
+    .champ textarea:focus {
+      border-color: var(--or);
+      box-shadow: 0 0 0 3px rgba(200,164,85,0.08);
+    }
+    .champ.erreur input,
+    .champ.erreur textarea { border-color: var(--rouge); }
+
+    .msg-erreur {
+      font-size: 0.75rem;
+      color: var(--rouge);
+      min-height: 1rem;
+    }
+
+    /* ========================================
+       9. PIED DE PAGE
+       ======================================== */
+    .pied {
+      background: var(--fond);
+      border-top: 1px solid var(--bord);
+      padding: 1.5rem 0;
+    }
+    .pied-interieur {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .pied-logo {
+      font-family: var(--police-titre);
+      font-size: 1.2rem;
+      color: var(--texte3);
+    }
+    .pied p {
+      font-size: 0.8rem;
+      color: var(--texte3);
+      margin: 0;
+    }
+
+    /* ========================================
+       10. MODAL DE CONFIRMATION
+       ======================================== */
+    .modal-fond {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--trans);
+    }
+    .modal-fond.ouvert {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .modal-boite {
+      background: var(--fond3);
+      border: 1px solid var(--bord-or);
+      border-radius: var(--rayon-l);
+      padding: 2.5rem;
+      max-width: 400px; width: 90%;
+      text-align: center;
+      transform: scale(0.9) translateY(20px);
+      transition: transform var(--trans);
+    }
+    .modal-fond.ouvert .modal-boite {
+      transform: scale(1) translateY(0);
+    }
+    .modal-icone {
+      width: 56px; height: 56px;
+      background: var(--or-fond);
+      border: 1px solid rgba(200,164,85,0.3);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; color: var(--or);
+      margin: 0 auto 1.25rem;
+    }
+    .modal-boite h3 {
+      font-family: var(--police-titre);
+      font-size: 1.4rem;
+      color: var(--texte);
+      margin-bottom: 0.5rem;
+    }
+    .modal-boite p {
+      font-size: 0.9rem;
+      color: var(--texte2);
+      margin-bottom: 1.5rem;
+    }
+    .modal-fermer {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      background: none; border: none;
+      font-size: 1.2rem; color: var(--texte3);
+      cursor: pointer;
+    }
+    .modal-boite { position: relative; }
+
+    /* ========================================
+       11. NOTIFICATION TOAST
+       ======================================== */
+    .toast {
+      position: fixed;
+      top: 80px; right: 20px;
+      background: var(--fond3);
+      border: 1px solid var(--bord-or);
+      border-radius: var(--rayon-l);
+      padding: 1rem 1.25rem;
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.875rem; color: var(--texte);
+      box-shadow: var(--ombre);
+      z-index: 999;
+      transform: translateX(120%);
+      transition: transform 0.4s cubic-bezier(0.68,-0.55,0.265,1.55);
+      min-width: 260px;
+    }
+    .toast.visible { transform: translateX(0); }
+    .toast i { color: var(--or); font-size: 1.1rem; }
+
+    /* ========================================
+       12. ANIMATION D'APPARITION AU SCROLL
+       ======================================== */
+    .animer {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .animer.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========================================
+       13. RESPONSIVE MOBILE
+       ======================================== */
+    @media (max-width: 860px) {
+      /* Menu mobile */
+      .nav-liens {
+        position: fixed;
+        top: 0; right: -100%;
+        width: min(300px, 80vw); height: 100vh;
+        background: var(--fond3);
+        border-left: 1px solid var(--bord-or);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 5rem 2rem 2rem;
+        gap: 1.5rem;
+        transition: right var(--trans);
+        z-index: 99;
+      }
+      .nav-liens.ouvert { right: 0; }
+      .burger { display: flex; }
+      .nav-lien { font-size: 1.1rem; }
+
+      /* Hero en colonne */
+      .hero-grille {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        text-align: center;
+      }
+      .hero-gauche {
+        display: flex; flex-direction: column; align-items: center;
+      }
+      .hero-desc { max-width: 100%; }
+
+      /* Projets et compétences */
+      .grille-projets { grid-template-columns: repeat(2, 1fr); }
+      .grille-competences { grid-template-columns: 1fr; }
+      .contact-grille { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .conteneur { padding: 0 1.25rem; }
+      .grille-projets { grid-template-columns: 1fr; }
+      .stats { gap: 1.25rem; }
+      .pied-interieur { flex-direction: column; text-align: center; }
+    }
+
+    /* ========================================
+       14. SCROLLBAR PERSONNALISÉE
+       ======================================== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--fond2); }
+    ::-webkit-scrollbar-thumb { background: var(--fond4); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--or); }
+
+    /* ========================================
+       15. ACCESSIBILITÉ
+       ======================================== */
+    .sr-only {
+      position: absolute; width:1px; height:1px;
+      padding:0; margin:-1px; overflow:hidden;
+      clip:rect(0,0,0,0); white-space:nowrap; border:0;
+    }
+    :focus-visible { outline: 2px solid var(--or); outline-offset: 2px; }
+
+      /* =====================
+       STYLES HERO — 2 COLONNES
+       ===================== --> */
+
+    /* ---- Conteneur principal ---- */
+    .hero-mini {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 6rem 0 4rem;
+      background: var(--fond);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Lueur ambrée côté droit (derrière la photo) */
+    .hero-lueur {
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(200,164,85,0.10) 0%, transparent 65%);
+      right: -100px; top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    /* Ligne verticale décorative à gauche */
+    .hero-ligne-deco {
+      position: absolute;
+      left: 2rem; top: 50%;
+      transform: translateY(-50%);
+      width: 1px; height: 120px;
+      background: linear-gradient(to bottom, transparent, var(--or), transparent);
+      opacity: 0.3;
+    }
+
+    /* ---- Layout 2 colonnes ---- */
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ---- COLONNE GAUCHE — texte ---- */
+    .hero-texte {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    /* Petite étiquette en haut */
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.3rem 0.9rem;
+      background: var(--or-fond);
+      border: 1px solid var(--bord-or);
+      border-radius: 99px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--or);
+      margin-bottom: 1.75rem;
+      animation: apparition 0.7s ease both;
+    }
+
+    /* Nom principal */
+    .hero-nom {
+      font-family: var(--police-titre);
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      line-height: 1.0;
+      margin-bottom: 1rem;
+      animation: apparition 0.7s ease 0.12s both;
+    }
+    .hero-nom-prenom {
+      display: block;
+      font-weight: 700;
+      color: var(--texte);
+    }
+    .hero-nom-famille {
+      display: block;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--or);
+    }
+
+    /* Trait séparateur */
+    .hero-trait {
+      width: 48px; height: 2px;
+      background: var(--or);
+      opacity: 0.5;
+      margin-bottom: 1.25rem;
+      animation: apparition 0.7s ease 0.22s both;
+    }
+
+    /* Intitulé du poste */
+    .hero-poste-txt {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--texte3);
+      margin-bottom: 2rem;
+      animation: apparition 0.7s ease 0.3s both;
+    }
+
+    /* Réseaux sociaux */
+    .hero-reseaux {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 2.5rem;
+      animation: apparition 0.7s ease 0.38s both;
+    }
+
+    .hero-lien-social {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1rem;
+      border: 1px solid var(--bord);
+      border-radius: var(--rayon);
+      color: var(--texte3);
+      font-size: 0.78rem;
+      font-weight: 600;
+      transition: all var(--trans);
+      text-decoration: none;
+    }
+    .hero-lien-social i { font-size: 0.85rem; }
+    .hero-lien-social:hover {
+      border-color: var(--or);
+      color: var(--or);
+      background: var(--or-fond);
+      transform: translateY(-2px);
+    }
+
+    /* Bouton CTA */
+    .hero-cta {
+      animation: apparition 0.7s ease 0.46s both;
+    }
+
+    /* Indicateur scroll */
+    .hero-scroll {
+      position: absolute;
+      bottom: 2rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--texte3);
+    }
+    .hero-scroll-trait {
+      width: 1px; height: 36px;
+      background: linear-gradient(to bottom, var(--or), transparent);
+      animation: pulsation 2s ease-in-out infinite;
+    }
+
+    /* ---- COLONNE DROITE — photo ---- */
+    .hero-photo-col {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      animation: apparition 0.9s ease 0.2s both;
+    }
+
+    /* Cadre principal de la photo */
+    .hero-photo-cadre {
+      position: relative;
+      width: 380px;
+      max-width: 100%;
+    }
+
+    /* La photo elle-même */
+    .hero-photo {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      /* Coin supérieur gauche arrondi, le reste angulaire — effet "couverture magazine" */
+      border-radius: 120px 16px 16px 16px;
+      border: 1px solid var(--bord-or);
+      /* légère désaturation pour un look éditorial */
+      filter: contrast(1.05) saturate(0.9);
+      transition: filter var(--trans);
+    }
+    .hero-photo-cadre:hover .hero-photo {
+      filter: contrast(1.0) saturate(1.05);
+    }
+
+    /* Halo doré derrière la photo */
+    .hero-photo-halo {
+      position: absolute;
+      inset: 10px -10px -10px 10px;
+      border-radius: 120px 16px 16px 16px;
+      border: 1px solid rgba(200,164,85,0.15);
+      z-index: -1;
+    }
+
+    /* Étiquette flottante en bas à gauche de la photo */
+    .hero-photo-etiquette {
+      position: absolute;
+      bottom: 1.5rem;
+      left: -1.5rem;
+      background: var(--fond3);
+      border: 1px solid var(--bord-or);
+      border-radius: var(--rayon-l);
+      padding: 0.8rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      backdrop-filter: blur(10px);
+    }
+    .hero-photo-etiquette-icone {
+      width: 32px; height: 32px;
+      background: var(--or-fond);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--or);
+      font-size: 0.85rem;
+    }
+    .hero-photo-etiquette-texte {
+      display: flex; flex-direction: column; gap: 1px;
+    }
+    .hero-photo-etiquette-texte strong {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--texte);
+    }
+    .hero-photo-etiquette-texte span {
+      font-size: 0.68rem;
+      color: var(--texte3);
+    }
+
+    /* Point disponible en haut à droite */
+    .hero-dispo-badge {
+      position: absolute;
+      top: 1.25rem; right: -0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--fond3);
+      border: 1px solid rgba(74,222,128,0.25);
+      border-radius: 99px;
+      padding: 0.3rem 0.7rem 0.3rem 0.4rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--vert);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .hero-dispo-point {
+      width: 7px; height: 7px;
+      background: var(--vert);
+      border-radius: 50%;
+      animation: clignoter 2s ease infinite;
+    }
+
+    /* .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    } */
+    @keyframes clignoter {
+      0%,100% { opacity: 1; }
+      50%      { opacity: 0.3; }
+    }
+
+    /* ---- Responsive ---- */
+    @media (max-width: 860px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      /* Sur mobile : photo en haut, texte en bas */
+      .hero-photo-col { justify-content: center; order: -1; }
+      .hero-texte     { align-items: center; text-align: center; }
+      .hero-photo-cadre { width: 260px; }
+      .hero-photo-etiquette { left: -0.5rem; }
+      .hero-reseaux { justify-content: center; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-lien-social span { display: none; }
+      .hero-lien-social { padding: 0.55rem 0.75rem; }
+      .hero-photo-etiquette { display: none; }
+    }
+  
